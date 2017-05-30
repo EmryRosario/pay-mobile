@@ -1,0 +1,17 @@
+{
+  "name": "cobro-movil",
+  "version": "1.0.0",
+  "description": "Small module to manage payments",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Emry Rosario Humphreys",
+  "license": "MIT",
+  "dependencies": {
+    "webpack": "^2.5.1"
+  },
+  "devDependencies": {
+    "webpack": "^2.5.1"
+  }
+}
