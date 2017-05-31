@@ -16,7 +16,7 @@ class Loan extends Component {
       proofState={loan['REC_ESTADO']}
              />
 
-    return (<tr>
+    return (<tr className={loan['REC_ESTADO'] === '3' ? 'proof-paid-out' : ''}>
       <td>{loan['REC_NUMERO']}</td>
       <td>{loan['REC_CODPRE']}</td>
       <td>{`${loan['CLI_NOMBRE']} ${loan['CLI_APELLI']}`}</td>
