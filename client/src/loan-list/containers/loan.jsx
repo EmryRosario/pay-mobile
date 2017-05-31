@@ -13,7 +13,8 @@ class Loan extends Component {
     let modalBody = <ApplyPaymentBody proofNumber={loan['REC_NUMERO']} loanNumber={loan['REC_CODPRE']}
       clientName={`${loan['CLI_NOMBRE']} ${loan['CLI_APELLI']}`}
       amountDue={loan['REC_CUOPAG'] + loan['REC_MORPAG']}
-              />
+      proofState={loan['REC_ESTADO']}
+             />
 
     return (<tr>
       <td>{loan['REC_NUMERO']}</td>

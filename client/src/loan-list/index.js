@@ -12,34 +12,6 @@ page('/', async (ctx, next) => {
       'Nombre',
       'Monto a Pagar',
       ''
-    ],
-    loans: [
-      {
-        'REC_NUMERO': 1234,
-        'REC_CODPRE': 15632,
-        'REC_NOMBRE': 'Emry',
-        'REC_MORPAG': 25615,
-        'REC_CUOPAG': 256156
-      }, {
-        'REC_NUMERO': 12435,
-        'REC_CODPRE': 156,
-        'REC_NOMBRE': 'Emry',
-        'REC_MORPAG': 25615,
-        'REC_CUOPAG': 256156
-      }, {
-        'REC_NUMERO': 12546,
-        'REC_CODPRE': 156,
-        'REC_NOMBRE': 'Emry',
-        'REC_MORPAG': 25615,
-        'REC_CUOPAG': 256156
-      }, {
-        'REC_NUMERO': 12456,
-        'REC_CODPRE': 15654,
-        'REC_NOMBRE': 'Emry',
-        'REC_MORPAG': 25615,
-        'REC_CUOPAG': 256156
-      }
-
     ]
   }
   props.loans = await getLoans()

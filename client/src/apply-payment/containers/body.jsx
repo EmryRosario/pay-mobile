@@ -49,7 +49,7 @@ class Body extends Component {
 
                 <div className={'form-group'}>
                   <label for={'amountPayable'}>{'Monto a Pagar: '}</label>
-                  <input type={'text'} className={'form-control'} value={this.state.amountPayable}
+                  <input type={'text'} className={'form-control'} readOnly={this.props.proofState !== '1'} value={this.state.amountPayable}
                     onChange={this.amountPayableHandleChange}
                     onBlur={this.amountPayableHandleBlur} />
                 </div>
