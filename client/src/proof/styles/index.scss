@@ -1,5 +1,5 @@
 .proof-space {
-	margin-top: 2em;
+	margin-top: 1em;
 }
 .col-xs-12.no-padding-left {
 	padding-left:0;
@@ -11,4 +11,9 @@
 
 .border-bottom{
     border-bottom: dotted black;
+}
+.proof {
+	font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+	font-size: 14px;
+	font-style: normal;
 }
