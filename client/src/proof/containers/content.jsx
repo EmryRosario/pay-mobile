@@ -16,12 +16,10 @@ class Content extends Component {
 
     let cuota = this.props.proof['REC_MTOCOB'] > mora ? this.props.proof['REC_MTOCOB'] - mora : 0
 
-    this.props.proof['REC_DESCRI'] = this.props.proof['REC_DESCRI'] || '...................'
-
     return (<div id={`proof-content-${this.props.proof['REC_NUMERO']}`} className={'col-xs-12  no-padding-right no-padding-left'}>
       <div className={'col-xs-12 text-center no-padding-left'}>
         <div className={'col-xs-6 text-left'}><span>{`CONCEPTO...: `}</span></div>
-        <div className={'col-xs-6 text-left'}><span>{'PAGO POR DESEMBOLSO'}</span></div>
+        <div className={'col-xs-6 text-left'}><span>{this.props.proof['REC_DESCRI']}</span></div>
         <div className={'col-xs-6 text-left'}><span>{`CUOTA...: `}</span></div>
         <div className={'col-xs-6 text-left'}><span>
           {numeral(cuota).format('$ 0,0.00')}
