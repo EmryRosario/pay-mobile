@@ -9,11 +9,13 @@
 	padding-right:0;
 }
 
-.border-bottom{
-    border-bottom: dotted black;
-}
+// .line-bottom{
+//     display:flex;
+// 		flex-wrap:nowrap;
+// }
 .proof {
 	font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
-	font-size: 14px;
+	font-size: 6px;
 	font-style: normal;
+	background-color:black;
 }

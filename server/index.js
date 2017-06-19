@@ -8,6 +8,10 @@ import cookieParser from 'cookie-parser'
 import expressSession from 'express-session'
 import {Strategy as LocalStrategy} from 'passport-local'
 import {ensureLoggedIn} from 'connect-ensure-login'
+import Proof from '../client/src/proof/proof.jsx'
+import React from 'react'
+import reactDOMServer from 'react-dom/server'
+import pdf from 'html-pdf'
 const app = express()
 
 app.engine('.jsx', engine.server.create())
@@ -121,5 +125,44 @@ app.get('/api/proof/client', (req, res) => {
 
 app.get('/api/user', (req, res) => {
   res.json(req.user)
+})
+
+app.get('/api/pdf/proof', (req, res) => {
+  let proof = req.query
+
+  let html = reactDOMServer.renderToStaticMarkup((
+    <html>
+      <head>
+        <meta charSet={'UTF-8'} />
+        <title>{'Cobro Movil'}</title>
+        <link rel={'stylesheet'} href={'http://rcsistemasrd.com/index.css'} />
+        <link rel={'stylesheet'} href={'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'} />
+      </head>
+      <body>
+        <Proof proof={JSON.parse(proof.proof)}
+        user={JSON.parse(proof.user)} company={JSON.parse(proof.company)}
+        client={JSON.parse(proof.client)} />
+      </body>
+    </html>
+    ))
+
+  var options = {
+  format: 'Letter',
+  height: "10.5in",
+  width: "3in",
+  type: 'pdf',
+  border: '0',
+  'phantomPath': './node_modules/phantomjs/bin/phantomjs',
+  'phantomArgs': [],
+  'timeout': 30000,
+ };
+
+pdf.create(html, options).toFile('./public/proof-'+req.user['USR_USUARI']+'.pdf', function(err, resp) {
+  if (err) return console.log(err)
+  console.log(resp)
+  console.log(req.user)
+  res.send()
+})
+
 })
 app.listen(5051, () => console.log('Server runnig on port 5051'))

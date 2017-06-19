@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import Header from './containers/header.jsx'
 import Content from './containers/content.jsx'
-import PropTypes from 'prop-types'
 
 class Proof extends Component {
   componentDidMount () {
@@ -18,9 +17,5 @@ class Proof extends Component {
   }
 }
 
-Proof.propTypes = {
-  proof: PropTypes.array,
-  company: PropTypes.array,
-  client: PropTypes.array
-}
+
 export default Proof

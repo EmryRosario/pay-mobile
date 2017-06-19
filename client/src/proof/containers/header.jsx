@@ -5,7 +5,7 @@ class Header extends Component {
 
   render () {
     let date = new Date()
-    return (<div id={`proof-header-${this.props.proof['REC_NUMERO']}`} className={'col-xs-12 border-bottom no-padding-right no-padding-left'}>
+    return (<div id={`proof-header-${this.props.proof['REC_NUMERO']}`} className={'col-xs-12  no-padding-right no-padding-left'}>
       <div id={'address-info'} className={'col-xs-12 text-center no-padding-left '}>
         <div className={'col-xs-12 text-center'}><span>{this.props.company['PAR_NOMEMP']} </span></div>
         <div className={'col-xs-12 text-left'}><span>{this.props.company['PAR_DIRECC']}</span></div>
@@ -31,6 +31,7 @@ class Header extends Component {
           <span>{'CEL.: '}{`${this.props.client['CLI_CELULA']}`}</span>
         </div>
       </div>
+      <div className={'line-bottom col-xs-12'}>{'----------------------------------------------------------------------------------------------------------------'}</div>
     </div>)
   }
 

@@ -32,12 +32,12 @@ class Content extends Component {
         <div className={'col-xs-6 text-left'}><span>{numeral(this.props.proof['REC_INGRES']).format('$ 0,0.00')}</span></div>
         <div className={'col-xs-6 text-left'}><span>{`DESCUENTO...: `}</span></div>
         <div className={'col-xs-6 text-left'}><span>{numeral(this.props.proof['REC_DESCUE']).format('$ 0,0.00')}</span></div>
-        <div className={'col-xs-4 col-xs-offset-6 text-left border-bottom'} />
+        <div className={'col-xs-4 col-xs-offset-6 text-left line-bottom'}>{'----------------------------'}</div>
         <div className={'col-xs-6 text-left'}><span>{'TOTAL.....:'}</span></div>
         <div className={'col-xs-6 text-left'}><span>
           {numeral(this.props.proof['REC_MTOCOB']).format('$ 0,0.00')}
         </span></div>
-        <div className={'col-xs-12 border-bottom'} />
+        <div className={'col-xs-12 line-bottom'}>{'-----------------------------------------------------------------------------------------------------------'}</div>
         <div className={'col-xs-6 text-left'}>{'IMPRESO POR:'}</div>
         <div className={'col-xs-6 text-left'}>{this.props.user['USR_USUARI']}</div>
         <div className={'col-xs-6 text-left'}>{'FECHA..: '}</div>
