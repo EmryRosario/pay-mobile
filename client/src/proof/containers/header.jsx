@@ -18,8 +18,8 @@ class Header extends Component {
         <br />
         <div className={'col-xs-6 text-left'}><span>{`FECHA:  ${date.getDate()}/${(date.getMonth() + 1)}/${date.getFullYear()}`}</span></div>
         <div className={'col-xs-6 text-right'}><span>{`RECIBO NO.: ${this.props.proof['REC_NUMERO']}`}</span></div>
-        <div className={'col-xs-6 text-left'}><span>{`PRESTAMO.: ${this.props.proof['REC_CODPRE']} `}</span></div>
-        <div className={'col-xs-6 text-right'}><span>{`No. DE CUOTAS: ${this.props.proof['COB_CUOTAS']}`}</span></div>
+        <div className={'col-xs-6 text-left'}><span>{`PRESTAMO.: `} {this.props.proof['REC_CODPRE']}</span></div>
+        <div className={'col-xs-6 text-right'}><span>{`No. DE CUOTAS: `} {this.props.proof['COB_CUOTAS']}</span></div>
 
         <div className={'col-xs-12 text-left form-group proof-space'}><span>{'CALLE: '} {this.props.client['CLI_CALLE']} </span></div>
         <div className={'col-xs-12 text-left'}><span>{'NUM: '}{this.props.client['CLI_NUMERO']}</span></div>
@@ -31,7 +31,7 @@ class Header extends Component {
           <span>{'CEL.: '}{`${this.props.client['CLI_CELULA']}`}</span>
         </div>
       </div>
-      <div className={'line-bottom col-xs-12'}>{'----------------------------------------------------------------------------------------------------------------'}</div>
+      <div className={'line-bottom col-xs-12'}>{'==========================================================='}</div>
     </div>)
   }
 

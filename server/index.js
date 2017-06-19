@@ -148,7 +148,7 @@ app.get('/api/pdf/proof', (req, res) => {
 
   var options = {
   format: 'Letter',
-  height: "10.5in",
+  height: "4in",
   width: "3in",
   type: 'pdf',
   border: '0',
