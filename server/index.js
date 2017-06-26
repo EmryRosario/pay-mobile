@@ -148,14 +148,14 @@ app.get('/api/pdf/proof', (req, res) => {
 
   var options = {
   format: 'Letter',
-  height: "4in",
+  height: "7in",
   width: "3in",
   type: 'pdf',
   border: '0',
-  'phantomPath': './node_modules/phantomjs/bin/phantomjs',
-  'phantomArgs': [],
-  'timeout': 30000,
- };
+  phantomPath: './node_modules/phantomjs/bin/phantomjs',
+  phantomArgs: [],
+  timeout: 30000,
+ }
 
 pdf.create(html, options).toFile('./public/proof-'+req.user['USR_USUARI']+'.pdf', function(err, resp) {
   if (err) return console.log(err)

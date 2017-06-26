@@ -57,7 +57,7 @@ class Body extends Component {
             </div>
           </form>
         </div>
-        <Footer handleSubmit={this.onHandleSubmit} proofNumber={this.props.proofNumber} />
+        <Footer handleSubmit={this.onHandleSubmit} proofState={this.props.proofState} proofNumber={this.props.proofNumber} />
       </div>
     )
   }

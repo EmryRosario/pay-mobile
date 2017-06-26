@@ -10,7 +10,7 @@ class Footer extends Component {
     return (
       <div className={'modal-footer'}>
         <button type={'button'} id={`close-btn-${this.props.proofNumber}`} className={'btn btn-default'} data-dismiss={'modal'}>{'Close'}</button>
-        <button type={'button'} className={'btn btn-primary'} onClick={this.onHandleSubmit}>{'Aceptar'}</button>
+        <button type={'button'} className={'btn btn-primary'} disabled={this.props.proofState !== '1'} onClick={this.onHandleSubmit}>{'Aceptar'}</button>
       </div>)
   }
 

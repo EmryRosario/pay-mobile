@@ -16,7 +16,6 @@ class ApplyPayment extends Component {
 
 ApplyPayment.propTypes = {
   header: PropTypes.element,
-  body: PropTypes.element,
-  footer: PropTypes.element
+  body: PropTypes.element
 }
 export default ApplyPayment
