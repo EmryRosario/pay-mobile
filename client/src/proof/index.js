@@ -54,7 +54,17 @@ page('/proof/:id', async (ctx, next) => {
     client,
     user
   })
-  window.location.replace('/proof-'+user['USR_USUARI']+'.pdf')
+  await openWindow('/proof-'+user['USR_USUARI']+'.pdf')
+   location.href='/'
   // reactDOM.render((<Proof proof={proof} user={user} company={company} client={client} />), mainContainer)
 
 })
+
+function openWindow(url) {
+		var a = document.createElement("a");
+		a.target = "_blank";
+		a.href = url;
+		a.click();
+
+    return Promise.resolve(null)
+	}

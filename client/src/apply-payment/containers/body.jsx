@@ -3,6 +3,7 @@ import numeral from 'numeral'
 import Footer from './footer.jsx'
 import axios from 'axios'
 import swal from 'sweetalert'
+import page from 'page'
 
 class Body extends Component {
   constructor (props) {
@@ -81,14 +82,14 @@ class Body extends Component {
       amount: this.state.amountPayable,
       proof: this.props.proofNumber
     }
+    console.log(payment)
     this.applyPayment(payment)
     .then((result) => {
       console.log(result)
       if (result.error) return swal('Error', 'Ha ocurrido un error al aplicar el pago', 'error')
       document.getElementById(`close-btn-${this.props.proofNumber}`).click()
       swal('Exito', 'El pago ha sido aplicado correctamente.', 'success')
-      this.openWindow('proof/' + this.props.proofNumber)
-      window.location.reload()
+      page.redirect('/proof/' + this.props.proofNumber)
     }
      )
   }
@@ -107,12 +108,6 @@ class Body extends Component {
     return result.data
   }
 
-  openWindow (url) {
-    var a = document.createElement('a')
-    a.target = '_blank'
-    a.href = url
-    a.click()
-  }
 }
 
 export default Body
