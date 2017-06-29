@@ -81,7 +81,6 @@ class Body extends Component {
       amount: this.state.amountPayable,
       proof: this.props.proofNumber
     }
-    console.log(payment)
     this.applyPayment(payment)
     .then((result) => {
       console.log(result)

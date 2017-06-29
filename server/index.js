@@ -80,7 +80,7 @@ app.get(['/', '/proof/:id'], ensureLoggedIn(), (req, res) => {
 app.put('/api/payment', (req, res) => {
   let {amount, proof} = req.body
 
-  connection.query(`UPDATE COBRECIBOS SET REC_ESTADO=3, REC_MTOCOB=${amount} WHERE REC_NUMERO=${proof}`,
+  connection.query(`UPDATE COBRECIBOS SET REC_ESTADO=3, REC_MTOCOB=${amount}, REC_CODEMP=${req.user['USR_CODIGO']} WHERE REC_NUMERO=${proof}`,
   (error, results) => {
     if (error) return res.json({error: error})
     return res.json({error: null, result: results})
