@@ -28,21 +28,21 @@ class Content extends Component {
           numeral(mora).format('$ 0,0.00')
           }</span></div>
         <div className={'col-xs-6 text-left'}><span>{`OTROS ING...: `}</span></div>
-        <div className={'col-xs-6 text-left'}><span>{numeral(this.props.proof['REC_INGRES']).format('$ 0,0.00')}</span></div>
+        <div className={'col-xs-6 text-left'}><span>{numeral(this.props.proof['REC_INGRES']).format('$0,0.00')}</span></div>
         <div className={'col-xs-6 text-left'}><span>{`DESCUENTO...: `}</span></div>
-        <div className={'col-xs-6 text-left'}><span>{numeral(this.props.proof['REC_DESCUE']).format('$ 0,0.00')}</span></div>
-        <div className={'col-xs-4 col-xs-offset-6 text-left line-bottom'}>{'-------------'}</div>
+        <div className={'col-xs-6 text-left'}><span>{numeral(this.props.proof['REC_DESCUE']).format('$0,0.00')}</span></div>
+        <div className={'col-xs-4 col-xs-offset-6 text-left line-bottom'}>{'--------------'}</div>
         <div className={'col-xs-6 text-left'}><span>{'TOTAL.....:'}</span></div>
         <div className={'col-xs-6 text-left'}><span>
-          {numeral(this.props.proof['REC_MTOCOB']).format('$ 0,0.00')}
+          {numeral(this.props.proof['REC_MTOCOB']).format('$0,0.00')}
         </span></div>
         <div className={'col-xs-12 line-bottom'}>{'================================================================='}</div>
         <div className={'col-xs-8 text-left'}><span>{`CUOTAS VENCIDAS: `}</span></div>
         <div className={'col-xs-4 text-left'}><span>{this.props.proof['REC_CUOATR']}</span></div>
         <div className={'col-xs-8 text-left'}><span>{`MTO. VENCIDO: `}</span></div>
-        <div className={'col-xs-4 text-left'}><span>{numeral(this.props.proof['REC_MTOATR']).format('$ 0,0.00')}</span></div>
+        <div className={'col-xs-4 text-left'}><span>{numeral(this.props.proof['REC_MTOATR']).format('$0,0.00')}</span></div>
         <div className={'col-xs-8 text-left'}><span>{`MTO. PENDIENTE: `}</span></div>
-        <div className={'col-xs-4 text-left'}><span>{numeral(this.props.proof['REC_MTOPEN']).format('$ 0,0.00')}</span></div>
+        <div className={'col-xs-4 text-left'}><span>{numeral(this.props.proof['REC_MTOPEN']).format('$0,0.00')}</span></div>
         <div className={'col-xs-12 line-bottom'}>{'================================================================='}</div>
         <div className={'col-xs-6 text-left'}>{'IMPRESO POR:'}</div>
         <div className={'col-xs-6 text-left'}>{this.props.user['USR_USUARI']}</div>
