@@ -22,7 +22,7 @@ class LoanList extends Component {
       <div className={'col-xs-12'}>
         <Title description={'Listado Recibos a cobrar'} />
         <Searcher handleChange={this.onSearcherHandleChange} searchText={this.state.searchText} className={'pull-right'} />
-        <table className={'table table-hover'}>
+        <table className={'table loans-table table-hover'}>
           <thead>
             <LoanTitle titles={this.props.titles} />
           </thead>
