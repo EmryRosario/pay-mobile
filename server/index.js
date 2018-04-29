@@ -12,6 +12,7 @@ import Proof from '../client/src/proof/proof.jsx'
 import React from 'react'
 import reactDOMServer from 'react-dom/server'
 import pdf from 'html-pdf'
+import cors from 'cors'
 const app = express()
 
 app.engine('.jsx', engine.server.create())
@@ -32,6 +33,7 @@ app.use(expressSession({ secret: process.env.SESSION_KEY,
 
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(cors())
 
 connection.connect()
 

@@ -13,6 +13,7 @@
     "body-parser": "^1.17.2",
     "connect-ensure-login": "^0.1.1",
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "html-pdf": "^2.1.0",
