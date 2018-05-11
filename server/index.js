@@ -13,6 +13,8 @@ import React from 'react'
 import reactDOMServer from 'react-dom/server'
 import pdf from 'html-pdf'
 import cors from 'cors'
+import jwt from 'jsonwebtoken';
+
 const app = express()
 
 app.engine('.jsx', engine.server.create())
@@ -68,7 +70,12 @@ app.get('/login', (req, res) => {
 
 app.post('/login',
   passport.authenticate('local', {failureRedirect: '/badlogin', failureFlash: true}), (req, res) => {
-    res.json({status: true})
+    
+    jwt.sign({ user: req.user }, 'sekencreto' , null, function(err, token) {
+      if (err) return res.json(null)
+      console.log(token)
+      return res.json(token);
+    });
   })
 
 app.get('/badlogin', (req, res) => {
