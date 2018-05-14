@@ -14,8 +14,11 @@ import reactDOMServer from 'react-dom/server'
 import pdf from 'html-pdf'
 import cors from 'cors'
 import jwt from 'jsonwebtoken';
+import bearerToken from 'express-bearer-token'
 
 const app = express()
+
+const privateKey = process.env.SESSION_KEY
 
 app.engine('.jsx', engine.server.create())
 app.set('views', path.join(__dirname, 'views'))
@@ -26,9 +29,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use(cookieParser())
-
+app.use(bearerToken())
 app.use(express.static('public'))
-app.use(expressSession({ secret: process.env.SESSION_KEY,
+app.use(expressSession({ secret: privateKey,
   resave: false,
   saveUninitialized: false
 }))
@@ -64,14 +67,23 @@ passport.deserializeUser(function (id, done) {
   })
 })
 
+function verifyToken (token) {
+  return new Promise ((resolve, reject) => {
+    jwt.verify(token, privateKey, (err, data) => {
+      if (err) return reject(err)
+      return resolve(data)
+    })
+  })
+}
+
 app.get('/login', (req, res) => {
   res.render('layout')
 })
 
 app.post('/login',
-  passport.authenticate('local', {failureRedirect: '/badlogin', failureFlash: true}), (req, res) => {
+  passport.authenticate('local', {failureRedirect: '/badlogin', failureFlash: false}), (req, res) => {
     
-    jwt.sign({ user: req.user }, 'sekencreto' , null, function(err, token) {
+    jwt.sign({ user: req.user }, privateKey , null, function(err, token) {
       if (err) return res.json(null)
       console.log(token)
       return res.json(token);
@@ -79,7 +91,7 @@ app.post('/login',
   })
 
 app.get('/badlogin', (req, res) => {
-  res.json({status: false})
+  res.send(false)
 })
 
 app.get(['/', '/proof/:id'], ensureLoggedIn(), (req, res) => {
@@ -88,12 +100,20 @@ app.get(['/', '/proof/:id'], ensureLoggedIn(), (req, res) => {
 
 app.put('/api/payment', (req, res) => {
   let {amount, proof} = req.body
+  
+  if (!req.user && req.token) {
+    verifyToken(req.token)
+    .then((response) => req.user = response.user)
+  }
 
-  connection.query(`UPDATE COBRECIBOS SET REC_ESTADO=3, REC_MTOCOB=${amount}, REC_CODEMP=${req.user['USR_CODIGO']} WHERE REC_NUMERO=${proof}`,
+  if (req.user) {
+    connection.query(`UPDATE COBRECIBOS SET REC_ESTADO=3, REC_MTOCOB=${amount}, REC_CODEMP=${req.user['USR_CODIGO']} WHERE REC_NUMERO=${proof}`,
   (error, results) => {
     if (error) return res.json({error: error})
     return res.json({error: null, result: results})
   })
+  }
+  res.status(401).json({})
 })
 
 app.get('/api/loans', (req, res) => {
@@ -134,6 +154,11 @@ app.get('/api/proof/client', (req, res) => {
 
 app.get('/api/user', (req, res) => {
   res.json(req.user)
+})
+app.get('/api/token/user', (req, res) => {
+  verifyToken(req.token)
+  .then((response) => res.json(response))
+  .catch((err) => res.json(err)) 
 })
 
 app.get('/api/pdf/proof', (req, res) => {

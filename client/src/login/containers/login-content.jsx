@@ -43,7 +43,7 @@ class LoginContent extends Component {
 
     axios.post('/login', user)
     .then((result) => {
-      if (!result) return swal('Error', 'Usuario y/o contraseña incorrecto.', 'error')
+      if (!result.data) return swal('Error', 'Usuario y/o contraseña incorrecto.', 'error')
       return page.redirect('/')
     })
   }
