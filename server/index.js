@@ -98,22 +98,22 @@ app.get(['/', '/proof/:id'], ensureLoggedIn(), (req, res) => {
   res.render('layout')
 })
 
-app.put('/api/payment', (req, res) => {
+app.put('/api/payment', async (req, res) => {
   let {amount, proof} = req.body
   
   if (!req.user && req.token) {
-    verifyToken(req.token)
-    .then((response) => req.user = response.user)
+    let response = await verifyToken(req.token)
+      req.user = response.user
   }
-
   if (req.user) {
     connection.query(`UPDATE COBRECIBOS SET REC_ESTADO=3, REC_MTOCOB=${amount}, REC_CODEMP=${req.user['USR_CODIGO']} WHERE REC_NUMERO=${proof}`,
   (error, results) => {
     if (error) return res.json({error: error})
     return res.json({error: null, result: results})
   })
+  } else {
+  res.status(401).json({})  
   }
-  res.status(401).json({})
 })
 
 app.get('/api/loans', (req, res) => {
