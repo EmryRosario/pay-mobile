@@ -19,7 +19,7 @@ import bearerToken from 'express-bearer-token'
 const app = express()
 
 const privateKey = process.env.SESSION_KEY
-
+const port = process.env.PORT || 7303
 app.engine('.jsx', engine.server.create())
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'jsx')
@@ -199,4 +199,4 @@ pdf.create(html, options).toFile('./public/proof-'+req.user['USR_USUARI']+'.pdf'
 })
 
 })
-app.listen(5051, () => console.log('Server runnig on port 5051'))
+app.listen(5051, () => console.log(`Server listen on port ${port}...`))
